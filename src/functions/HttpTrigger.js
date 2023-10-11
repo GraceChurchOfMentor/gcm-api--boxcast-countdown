@@ -32,6 +32,12 @@ app.http('HttpTrigger', {
         const channelId = request.query.get('channelId')
         const details = await getBroadcast(channelId)
 
+        if ( ! details) {
+            return {
+                body: 'error'
+            }
+        }
+
         return {
             headers: {
                 'content-type': 'application/json'
